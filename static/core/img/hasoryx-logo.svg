@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 220" role="img" aria-labelledby="title desc">
+<title id="title">HASORYX Transport Agency Limited</title><desc id="desc">Gold truck travelling on a curved road above the HASORYX wordmark.</desc>
+<defs><linearGradient id="gold" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#ffe36b"/><stop offset=".55" stop-color="#f5c400"/><stop offset="1" stop-color="#bd8700"/></linearGradient></defs>
+<g fill="none" stroke="url(#gold)" stroke-linecap="round" stroke-linejoin="round">
+<path d="M45 123 Q190 164 326 128 Q443 96 580 126" stroke-width="15"/>
+<path d="M55 126 Q190 164 326 128 Q443 96 570 126" stroke="#fff" stroke-width="3" stroke-dasharray="22 24"/>
+</g>
+<g stroke="#f5c400" stroke-width="5" stroke-linejoin="round">
+<path d="M198 51 H402 L438 77 H487 L514 111 H191 Z" fill="#171717"/>
+<path d="M438 77 H487 L514 111 H438 Z" fill="#292929"/>
+<path d="M449 83 H480 L499 105 H449 Z" fill="#dce5e8" stroke-width="2"/>
+<path d="M204 59 H423 V106 H204 Z" fill="#242424"/>
+<path d="M214 69 H410 V96 H214 Z" fill="#353535" stroke-width="2"/>
+<path d="M191 111 H514" fill="none"/>
+<circle cx="254" cy="114" r="15" fill="#090909"/><circle cx="254" cy="114" r="6" fill="#f5c400" stroke="none"/>
+<circle cx="452" cy="114" r="15" fill="#090909"/><circle cx="452" cy="114" r="6" fill="#f5c400" stroke="none"/>
+<path d="M188 105 H174 L163 112" fill="none" stroke-width="4"/>
+</g>
+<text x="320" y="178" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="61" font-weight="900" letter-spacing="2">HASORY<tspan fill="#f5c400">X</tspan></text>
+<path d="M110 195 H176 M464 195 H530" stroke="#f5c400" stroke-width="3"/>
+<text x="320" y="201" text-anchor="middle" fill="#f5c400" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="3">TRANSPORT AGENCY LIMITED</text>
+</svg>
