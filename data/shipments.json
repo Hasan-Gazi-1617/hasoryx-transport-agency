@@ -1,0 +1,15 @@
+[
+  {
+    "tracking_id": "HTA-2026-0001",
+    "service": "Cargo Transport",
+    "origin": "Dhaka",
+    "destination": "Sylhet",
+    "status": "In Transit",
+    "last_updated": "2026-10-30",
+    "history": [
+      {"status": "Booking Confirmed", "location": "Dhaka", "date": "2026-10-28", "time": "10:30"},
+      {"status": "Picked Up", "location": "Dhaka", "date": "2026-10-29", "time": "08:15"},
+      {"status": "In Transit", "location": "Brahmanbaria", "date": "2026-10-30", "time": "14:00"}
+    ]
+  }
+]
