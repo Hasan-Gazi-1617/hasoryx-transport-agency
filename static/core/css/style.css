@@ -2,3 +2,15 @@
 
 /* Hasoryx brand logo */
 .brand{gap:0;flex-shrink:0}.brand img{display:block;width:176px;height:68px;object-fit:contain;object-position:left center}.footer-brand img{width:190px;height:72px}@media(max-width:680px){.brand img{width:150px;height:62px}.footer-brand img{width:175px;height:68px}}
+
+
+/* Fixed transparent navigation and expanded Hasoryx branding */
+.site-header{position:fixed;top:0;left:0;right:0;width:100%;height:100px;background:rgba(9,12,18,.34);color:#fff;z-index:1000;border-bottom:1px solid rgba(255,255,255,.10);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px)}
+.site-header .nav-wrap{width:calc(100% - 48px);max-width:none;margin:0 24px}
+.site-header .brand{margin-left:0;flex:0 0 auto}
+.site-header .brand img{width:250px;height:94px;object-fit:contain;object-position:left center}
+.site-header .nav-links{gap:clamp(14px,2vw,30px);font-size:13px}
+.site-header .nav-links a{white-space:nowrap}
+.page-hero{padding-top:175px}
+@media(max-width:900px){.site-header .nav-wrap{width:calc(100% - 36px);margin:0 18px}.site-header .brand img{width:218px;height:88px}}
+@media(max-width:680px){.site-header{height:82px}.site-header .nav-wrap{width:calc(100% - 28px);margin:0 14px}.site-header .brand img{width:190px;height:78px}.nav-links{top:82px}.page-hero{padding-top:145px}}
