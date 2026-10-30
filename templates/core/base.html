@@ -8,15 +8,16 @@
   <title>{% block title %}Hasoryx Transport Agency Limited{% endblock %}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="{% static 'core/img/hasoryx-logo.svg' %}">
   <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
 </head>
 <body>
 <header class="site-header"><div class="container nav-wrap">
-  <a class="brand" href="{% url 'home' %}"><span class="brand-mark">H</span><span><strong>HASORYX</strong><small>TRANSPORT AGENCY LIMITED</small></span></a>
+  <a class="brand" href="{% url 'home' %}" aria-label="Hasoryx Transport Agency Limited home"><img src="{% static 'core/img/hasoryx-logo.svg' %}" alt="HASORYX Transport Agency Limited"></a>
   <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <nav class="nav-links"><a href="{% url 'home' %}">Home</a><a href="{% url 'about' %}">About</a><a href="{% url 'services' %}">Services</a><a href="{% url 'fleet' %}">Our Fleet</a><a href="{% url 'track' %}">Track Shipment</a><a class="nav-cta" href="{% url 'contact' %}">Get a Quote <span>↗</span></a></nav>
 </div></header>
 <main>{% block content %}{% endblock %}</main>
-<footer class="footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="{% url 'home' %}"><span class="brand-mark">H</span><span><strong>HASORYX</strong><small>TRANSPORT AGENCY LIMITED</small></span></a><p>Moving your business forward with dependable transport and logistics solutions.</p></div><div><h4>Explore</h4><a href="{% url 'about' %}">About us</a><a href="{% url 'services' %}">Services</a><a href="{% url 'fleet' %}">Our fleet</a></div><div><h4>Quick links</h4><a href="{% url 'track' %}">Track shipment</a><a href="{% url 'contact' %}">Contact</a></div><div><h4>Contact</h4><p>Bangladesh</p><p>Connect with us for business inquiries.</p></div></div><div class="container footer-bottom">© {% now 'Y' %} Hasoryx Transport Agency Limited. All rights reserved.</div></footer>
+<footer class="footer"><div class="container footer-grid"><div><a class="brand footer-brand" href="{% url 'home' %}" aria-label="Hasoryx Transport Agency Limited home"><img src="{% static 'core/img/hasoryx-logo.svg' %}" alt="HASORYX Transport Agency Limited"></a><p>Moving your business forward with dependable transport and logistics solutions.</p></div><div><h4>Explore</h4><a href="{% url 'about' %}">About us</a><a href="{% url 'services' %}">Services</a><a href="{% url 'fleet' %}">Our fleet</a></div><div><h4>Quick links</h4><a href="{% url 'track' %}">Track shipment</a><a href="{% url 'contact' %}">Contact</a></div><div><h4>Contact</h4><p>Bangladesh</p><p>Connect with us for business inquiries.</p></div></div><div class="container footer-bottom">© {% now 'Y' %} Hasoryx Transport Agency Limited. All rights reserved.</div></footer>
 <script src="{% static 'core/js/main.js' %}"></script>
 </body></html>
