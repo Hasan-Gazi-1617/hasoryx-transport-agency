@@ -12,16 +12,17 @@ Scope: full platform, delivered in safe, testable phases.
 - [x] Confirm product direction and target architecture.
 - [x] Create a dedicated feature branch.
 - [x] Document architecture, domain data model, and delivery roadmap.
-- [ ] Add environment-aware production settings.
-- [ ] Add automated checks and a repeatable local setup guide.
+- [x] Add environment-aware settings with local SQLite and production PostgreSQL configuration.
+- [x] Add automated check workflow and repeatable local setup guide.
 
 ## Phase 1 - Platform foundation
-- Configure PostgreSQL for production and SQLite for local development only if DATABASE_URL is absent.
-- Configure Django auth, sessions, middleware, secure cookies, and login/logout.
-- Establish a custom user model before the first production database migration.
-- Add role/group bootstrap command and protected staff dashboard shell.
-- Add tests for authentication, permissions, CSRF, and customer/staff access boundaries.
-- Configure Render PostgreSQL and persistent production settings without committing secrets.
+- [x] Enable Django auth, sessions, middleware, secure cookies, and login/logout.
+- [x] Establish a custom user model before the first production database migration.
+- [x] Add role field and protected staff dashboard shell.
+- [x] Add initial authentication and staff-access tests.
+- [ ] Verify CI results and migration consistency.
+- [ ] Add a role/group bootstrap and staff provisioning workflow.
+- [ ] Provision Render PostgreSQL, apply migrations, and verify production settings.
 
 ## Phase 2 - Premium corporate website
 - Refine responsive navigation, homepage, service pages, company profile, industries, network, contact, and quote enquiry.
