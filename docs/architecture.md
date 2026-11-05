@@ -34,7 +34,7 @@ The platform must not claim to operate global routes, customs brokerage, or carr
 | Concern | Initial choice |
 |---|---|
 | Backend | Django 5.2 |
-| Database | PostgreSQL in production; SQLite for local development |
+| Database | Django built-in SQLite for the current phase; PostgreSQL migration later |
 | Web UI | Django templates, Bootstrap, JavaScript |
 | Authentication | Django authentication and database sessions |
 | Authorization | Django permissions and groups, with domain-level checks |
@@ -95,11 +95,11 @@ Apps should be introduced incrementally. Do not create empty apps before the rel
 - Tracking references must be hard to guess and rate-limited.
 - Validate file type, size, ownership, and access before accepting or serving documents.
 - Record audit events for privileged actions, status overrides, financial changes, and permission changes.
-- Back up PostgreSQL and private document storage; test restoration.
+- Before production launch, configure durable database and private document storage backups and test restoration.
 
 ## Data and integration principles
 
-- PostgreSQL is the source of truth for business records.
+- The configured relational database is the source of truth for business records. SQLite is used during the current development phase; PostgreSQL is required before durable production operations.
 - Store money as decimal amounts with an ISO currency code, never floating point.
 - Store timestamps as timezone-aware values in UTC; render in the user's or operating location's timezone.
 - Keep shipment event history append-only. Corrections should be recorded as new audited events rather than silently rewriting history.
@@ -113,7 +113,7 @@ Apps should be introduced incrementally. Do not create empty apps before the rel
 
 The current project is a small Django site with JSON-based public tracking. Preserve its public pages while migrating in controlled steps:
 1. Add project documentation and a protected feature branch.
-2. Add environment-aware PostgreSQL configuration and Django authentication/session support.
+2. Configure Django's built-in SQLite database and enable authentication/session support.
 3. Add the first database-backed accounts and customer foundations.
 4. Migrate shipment tracking from JSON to relational records with a one-time import and verification.
 5. Add bookings, operations, billing, and customer portal incrementally.
@@ -121,6 +121,6 @@ The current project is a small Django site with JSON-based public tracking. Pres
 
 ## Current implementation boundary
 
-Implemented on the foundation feature branch: PostgreSQL-aware settings, the custom accounts.User model and initial migration, Django sessions and authentication middleware, staff login/logout, a staff-only dashboard shell, and initial access tests. The original public pages and JSON-backed tracking remain unchanged.
+Implemented on the foundation feature branch: SQLite settings, the custom accounts.User model and initial migration, Django sessions and authentication middleware, staff login/logout, a staff-only dashboard shell, and initial access tests. The original public pages and JSON-backed tracking remain unchanged.
 
-Not yet implemented: customer, booking, shipment, billing, fleet, warehouse, document, notification, and carrier-integration workflows. The branch must pass CI and receive a PostgreSQL-backed deployment test before release.
+Not yet implemented: customer, booking, shipment, billing, fleet, warehouse, document, notification, and carrier-integration workflows. The branch must pass CI. Before handling real production records, migrate to a durable managed database and verify deployment.
