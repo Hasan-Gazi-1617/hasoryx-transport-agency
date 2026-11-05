@@ -4,7 +4,7 @@ Django-based transport and logistics platform. The public marketing website and 
 
 ## Technology
 - Python 3.12 and Django 5.2
-- PostgreSQL for production; SQLite for local development
+- Django built-in SQLite database for the current development phase
 - Django authentication, sessions, groups and permissions
 - WhiteNoise for static files
 - Render deployment
@@ -28,11 +28,11 @@ Do not create the first database migration against the built-in Django User mode
 
 ## Database configuration
 
-- Local development: omit DATABASE_URL; SQLite is used when DJANGO_DEBUG=True.
-- Production: set DATABASE_URL to a managed PostgreSQL connection string. Production startup deliberately fails if it is missing, rather than silently using Render's ephemeral filesystem.
-- Set DJANGO_SECRET_KEY, DJANGO_DEBUG=False, DJANGO_ALLOWED_HOSTS and DJANGO_CSRF_TRUSTED_ORIGINS in the hosting environment.
-
-Before deploying this branch, provision PostgreSQL in Render and add its internal connection string as DATABASE_URL. Then run python manage.py migrate as a release/deploy step and create the first superuser using a secure one-time management process. Do not commit credentials or a production database URL.
+- The project currently uses Django's built-in SQLite backend and stores the development database at `db.sqlite3` in the project root.
+- Database tables are created/updated with `python manage.py migrate`.
+- Render startup also runs migrations before starting Gunicorn.
+- Important: Render's default filesystem is ephemeral. SQLite data on a free Render service can be lost when the service restarts or redeploys. Use SQLite for development and early testing only. Before storing real customer, booking, payment, or shipment records in production, move to a persistent managed database such as PostgreSQL.
+- Set `DJANGO_SECRET_KEY`, `DJANGO_DEBUG=False`, `DJANGO_ALLOWED_HOSTS` and `DJANGO_CSRF_TRUSTED_ORIGINS` in the hosting environment.
 
 ## Public shipment tracking
 
