@@ -34,7 +34,7 @@ The platform must not claim to operate global routes, customs brokerage, or carr
 | Concern | Initial choice |
 |---|---|
 | Backend | Django 5.2 |
-| Database | PostgreSQL |
+| Database | PostgreSQL in production; SQLite for local development |
 | Web UI | Django templates, Bootstrap, JavaScript |
 | Authentication | Django authentication and database sessions |
 | Authorization | Django permissions and groups, with domain-level checks |
@@ -49,22 +49,22 @@ The platform must not claim to operate global routes, customs brokerage, or carr
 
 ## Django app boundaries
 
-- `core`: public pages, shared utilities, health checks.
-- `accounts`: user lifecycle, authentication, roles, staff access.
-- `customers`: customer organisations, contacts, addresses, preferences.
-- `services`: service catalogue, service availability and service rules.
-- `bookings`: quote requests and booking lifecycle.
-- `shipments`: consignments, packages, route legs, assignments.
-- `tracking`: immutable tracking events, public tracking projection.
-- `operations`: operational queues, exceptions, handovers and proof of delivery.
-- `fleet`: vehicles, drivers, maintenance and availability.
-- `warehouse`: facilities, storage locations, inventory movements and scans.
-- `billing`: quotes, invoices, payments, credit notes and account balances.
-- `documents`: document metadata, access policy and storage integration.
-- `notifications`: email/SMS notification preferences and delivery records.
-- `support`: customer enquiries and support tickets.
-- `reports`: operational and financial reporting.
-- `integrations`: carrier, map, payment and partner adapters.
+- core: public pages, shared utilities, health checks.
+- accounts: user lifecycle, authentication, roles, staff access.
+- customers: customer organisations, contacts, addresses, preferences.
+- services: service catalogue, service availability and service rules.
+- bookings: quote requests and booking lifecycle.
+- shipments: consignments, packages, route legs, assignments.
+- tracking: immutable tracking events, public tracking projection.
+- operations: operational queues, exceptions, handovers and proof of delivery.
+- fleet: vehicles, drivers, maintenance and availability.
+- warehouse: facilities, storage locations, inventory movements and scans.
+- billing: quotes, invoices, payments, credit notes and account balances.
+- documents: document metadata, access policy and storage integration.
+- notifications: email/SMS notification preferences and delivery records.
+- support: customer enquiries and support tickets.
+- reports: operational and financial reporting.
+- integrations: carrier, map, payment and partner adapters.
 
 Apps should be introduced incrementally. Do not create empty apps before the relevant feature is scheduled.
 
@@ -121,4 +121,6 @@ The current project is a small Django site with JSON-based public tracking. Pres
 
 ## Current implementation boundary
 
-This document describes the target architecture, not completed functionality. The current repository still contains the original public Django pages and JSON tracking implementation. Each completed phase must be reflected in code, tests, and deployment configuration before being described as live.
+Implemented on the foundation feature branch: PostgreSQL-aware settings, the custom accounts.User model and initial migration, Django sessions and authentication middleware, staff login/logout, a staff-only dashboard shell, and initial access tests. The original public pages and JSON-backed tracking remain unchanged.
+
+Not yet implemented: customer, booking, shipment, billing, fleet, warehouse, document, notification, and carrier-integration workflows. The branch must pass CI and receive a PostgreSQL-backed deployment test before release.
