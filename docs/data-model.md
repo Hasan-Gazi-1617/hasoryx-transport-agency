@@ -1,27 +1,22 @@
 # Hasoryx Logistics Data Model
 
-This is the proposed relational model. Implement models incrementally in their owning Django apps. Names are conceptual and may be refined during implementation.
+This document describes the target relational model. Implement business entities incrementally in their owning Django apps.
 
 ## Identity and access
 
 ### User
-Use Django's custom user model from the beginning, before the first production migration. Recommended: subclass AbstractUser and use email as the login identifier if the business confirms email-based login.
+Implemented as accounts.User, subclassing Django AbstractUser. Username is the current login identifier; email is unique. Fields include username, email, first_name, last_name, is_active, is_staff, date_joined, and role. A superuser is assigned the Super Admin role automatically.
 
-Key fields: email, phone, first_name, last_name, is_active, is_staff, date_joined.
-
-### Role and permissions
-Use Django Groups and Permissions for broad roles:
+### Initial staff roles
 - Super Admin
-- Operations Manager
-- Booking Officer
-- Shipment Operator
-- Warehouse Staff
-- Fleet Manager
-- Finance Officer
+- Operations
+- Dispatch
+- Warehouse
+- Finance
 - Customer Support
-- Customer
+- General Staff
 
-Do not rely on role names alone. Enforce specific Django permissions and object-level ownership in views and domain services.
+The role field is a convenient starting classification, not a substitute for permission checks. Use Django Groups and Permissions and enforce object-level access in each business module. Customer accounts and organisation membership will be designed with the customer portal phase.
 
 ## Customers
 
@@ -135,11 +130,11 @@ Fields: actor, action, entity_type, entity_id, before_data (redacted JSON), afte
 
 ## Implementation order
 
-1. Custom User and role/permission setup.
+1. Custom User and role/permission setup (initial user model and role field implemented; granular permissions remain).
 2. Customer organisation, contact, and address.
 3. Service catalogue and quote requests.
 4. Booking and shipment.
 5. Packages, legs, and tracking events.
 6. Operations, delivery, and proof of delivery.
 7. Billing and payments.
-8. Fleet, warehouse, documents, notifications, support, and reports.
+8. Fleet, warehouse, documents, notifications, support, reports.
