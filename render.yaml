@@ -4,7 +4,7 @@ services:
     runtime: python
     plan: free
     buildCommand: bash build.sh
-    startCommand: gunicorn config.wsgi:application
+    startCommand: python manage.py migrate --noinput && gunicorn config.wsgi:application
     envVars:
       - key: PYTHON_VERSION
         value: 3.12.8
@@ -14,3 +14,5 @@ services:
         value: "False"
       - key: DJANGO_ALLOWED_HOSTS
         value: .onrender.com
+      - key: DJANGO_CSRF_TRUSTED_ORIGINS
+        value: https://*.onrender.com

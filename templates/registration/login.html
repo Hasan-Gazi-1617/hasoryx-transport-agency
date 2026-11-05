@@ -1,0 +1,22 @@
+{% extends "core/base.html" %}
+{% block title %}Staff Login | Hasoryx{% endblock %}
+{% block content %}
+<section class="container" style="max-width:520px;padding:72px 20px 90px;min-height:60vh">
+  <div style="background:#fff;border:1px solid #e8e8e8;border-radius:18px;padding:32px;color:#171717;box-shadow:0 18px 55px rgba(0,0,0,.08)">
+    <p style="color:#a87800;font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.78rem">Staff portal</p>
+    <h1 style="font-size:2rem;margin:8px 0">Sign in to Hasoryx</h1>
+    <p style="color:#666;margin-bottom:24px">Authorized team members only.</p>
+    {% if form.errors %}<p role="alert" style="color:#b42318">The username or password is incorrect. Please try again.</p>{% endif %}
+    {% if next %}<p style="color:#666">Please sign in to continue.</p>{% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}">
+      <label for="id_username" style="display:block;font-weight:600;margin:14px 0 6px">Username</label>
+      <input id="id_username" name="username" type="text" autocomplete="username" required autofocus style="width:100%;padding:13px;border:1px solid #ccc;border-radius:9px">
+      <label for="id_password" style="display:block;font-weight:600;margin:16px 0 6px">Password</label>
+      <input id="id_password" name="password" type="password" autocomplete="current-password" required style="width:100%;padding:13px;border:1px solid #ccc;border-radius:9px">
+      <button type="submit" style="width:100%;margin-top:22px;padding:14px;border:0;border-radius:9px;background:#f4c430;color:#111;font-weight:800;cursor:pointer">Sign in securely</button>
+    </form>
+  </div>
+</section>
+{% endblock %}
