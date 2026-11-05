@@ -12,8 +12,9 @@ Scope: full platform, delivered in safe, testable phases.
 - [x] Confirm product direction and target architecture.
 - [x] Create a dedicated feature branch.
 - [x] Document architecture, domain data model, and delivery roadmap.
-- [x] Add environment-aware settings with local SQLite and production PostgreSQL configuration.
+- [x] Configure Django's built-in SQLite database for the initial development phase.
 - [x] Add automated check workflow and repeatable local setup guide.
+- [x] Configure SQLite migrations for the current phase; defer PostgreSQL provisioning.
 
 ## Phase 1 - Platform foundation
 - [x] Enable Django auth, sessions, middleware, secure cookies, and login/logout.
@@ -22,7 +23,7 @@ Scope: full platform, delivered in safe, testable phases.
 - [x] Add initial authentication and staff-access tests.
 - [ ] Verify CI results and migration consistency.
 - [ ] Add a role/group bootstrap and staff provisioning workflow.
-- [ ] Provision Render PostgreSQL, apply migrations, and verify production settings.
+- [ ] Plan and test migration from SQLite to managed PostgreSQL before real production data is stored.
 
 ## Phase 2 - Premium corporate website
 - Refine responsive navigation, homepage, service pages, company profile, industries, network, contact, and quote enquiry.
