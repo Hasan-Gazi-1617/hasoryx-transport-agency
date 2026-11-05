@@ -29,7 +29,7 @@ class StaffAccessTests(TestCase):
     def test_non_staff_user_cannot_access_dashboard(self):
         self.client.force_login(self.customer)
         response = self.client.get(reverse("staff-dashboard"))
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 403)
 
     def test_superuser_is_assigned_super_admin_role(self):
         admin = User.objects.create_superuser("root", "root@example.com", "Strong-test-pass-123")
